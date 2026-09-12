@@ -1,0 +1,70 @@
+.repairGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.repairCard {
+  background: var(--ink-raised);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.repairVisual {
+  aspect-ratio: 16 / 10;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--ink-raised-2), var(--ink));
+  border-bottom: 1px solid var(--ink-line);
+}
+.repairImage {
+  object-fit: cover;
+}
+.repairBody {
+  padding: 24px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .repairBody {
+    padding: 20px 20px 24px;
+  }
+}
+.repairVehicle {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  color: var(--amber);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.repairBody h3 {
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--text);
+}
+.repairLine {
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+}
+.repairLine b {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  display: block;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+.placeholderNote {
+  margin-top: 22px;
+  font-size: var(--fs-xs);
+  color: var(--text-faint);
+  font-style: italic;
+}

@@ -1,0 +1,46 @@
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1px;
+  background: var(--ink-line);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+.serviceCard {
+  background: var(--ink-raised);
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (max-width: 640px) {
+  .serviceCard {
+    padding: 24px 20px;
+  }
+}
+.serviceIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-s);
+  background: var(--ink-raised-2);
+  border: 1px solid var(--ink-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+}
+.serviceIcon svg {
+  width: 24px;
+  height: 24px;
+}
+.serviceCard h3 {
+  font-size: var(--fs-md);
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--text);
+}
+.serviceCard p {
+  color: var(--text-dim);
+  font-size: var(--fs-sm);
+}

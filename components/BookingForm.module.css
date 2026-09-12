@@ -1,0 +1,151 @@
+.successBanner {
+  display: none;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(108, 187, 138, 0.12);
+  border: 1px solid rgba(108, 187, 138, 0.4);
+  color: #a9e0bc;
+  padding: 16px 18px;
+  border-radius: var(--radius-s);
+  margin-bottom: 24px;
+  font-size: var(--fs-sm);
+}
+.successBanner svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: var(--ok);
+  margin-top: 1px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.formRow.single {
+  grid-template-columns: 1fr;
+}
+.formRow.thirds {
+  grid-template-columns: 1.2fr 1fr 0.8fr;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.field label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+.opt {
+  color: var(--text-faint);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.field input[type='text'],
+.field input[type='tel'],
+.field input[type='email'],
+.field select,
+.field textarea {
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-s);
+  padding: 12px 13px;
+  background: var(--field-bg);
+  color: var(--field-ink);
+  font-size: var(--fs-sm);
+  width: 100%;
+}
+.field textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--red);
+}
+.field[data-has-error='true'] input,
+.field[data-has-error='true'] select,
+.field[data-has-error='true'] textarea {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(216, 38, 31, 0.18);
+}
+.fieldError {
+  font-size: var(--fs-xs);
+  color: #ff8f8a;
+}
+
+.radioRow {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+.radioOpt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-sm);
+  color: var(--text);
+}
+.radioOpt input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--red);
+}
+
+.consentRow {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 24px 0;
+}
+.consentRow input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--red);
+  flex: none;
+}
+.consentRow label {
+  font-size: var(--fs-xs);
+  color: var(--text-dim);
+}
+
+.formSummaryError {
+  display: none;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(216, 38, 31, 0.14);
+  border: 1px solid rgba(216, 38, 31, 0.4);
+  color: #ff8f8a;
+  padding: 12px 14px;
+  border-radius: var(--radius-s);
+  font-size: var(--fs-sm);
+  margin-bottom: 18px;
+}
+.formSummaryError svg {
+  /* The original design never constrained this icon's size (only the
+     success banner's was sized), so it rendered oversized whenever the
+     error banner appeared. Fixed here to match the success banner. */
+  width: 20px;
+  height: 20px;
+  flex: none;
+  margin-top: 1px;
+}
+.isVisible {
+  display: flex;
+}
+
+@media (max-width: 640px) {
+  .formRow,
+  .formRow.thirds {
+    grid-template-columns: 1fr;
+  }
+}

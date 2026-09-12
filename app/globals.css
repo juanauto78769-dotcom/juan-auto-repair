@@ -1,0 +1,287 @@
+/* ---------- Design tokens ---------- */
+:root {
+  --ink: #141210;
+  --ink-raised: #1c1916;
+  --ink-raised-2: #221e1a;
+  --ink-line: #38332c;
+  --ink-line-soft: #2a2620;
+  --text: #f4efe6;
+  --text-dim: #b0a696;
+  --text-faint: #918776;
+  --red: #d8261f;
+  --red-deep: #9c1a15;
+  --red-glow: rgba(216, 38, 31, 0.35);
+  --amber: #e2a33b;
+  --ok: #6cbb8a;
+  --field-bg: #f6f1e8;
+  --field-ink: #221e1a;
+
+  --font-display: var(--font-hanken-grotesk), var(--font-inter), -apple-system, sans-serif;
+  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), 'SFMono-Regular', Consolas, monospace;
+
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-md: 1.1875rem;
+  --fs-lg: 1.4rem;
+  --fs-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem);
+  --fs-2xl: clamp(2rem, 1.5rem + 2vw, 2.9rem);
+  --fs-3xl: clamp(2.5rem, 1.7rem + 3.2vw, 4.2rem);
+
+  --radius-s: 4px;
+  --radius-m: 8px;
+  --shadow-pop: 0 20px 48px -16px rgba(0, 0, 0, 0.6);
+  --maxw: 1180px;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-wrap: balance;
+  margin: 0;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* Body gets bottom padding on phones so the fixed mobile CTA bar never
+   covers the last bit of content. Toggled by the same breakpoint the
+   bar itself becomes visible at (see MobileBookingBar.module.css). */
+@media (max-width: 640px) {
+  body {
+    padding-bottom: 76px;
+  }
+}
+
+/* ---------- Shared layout / utility classes ---------- */
+/* These are used by multiple section components, so they live globally
+   rather than being duplicated across CSS modules. */
+
+.skipLink {
+  position: fixed;
+  top: -100px;
+  left: 12px;
+  z-index: 100;
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  padding: 12px 20px;
+  border-radius: var(--radius-s);
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skipLink:focus {
+  top: 12px;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--red);
+  display: inline-block;
+  flex: none;
+  margin-top: 7px;
+}
+
+.section {
+  padding: 96px 0;
+}
+.sectionHead {
+  max-width: 640px;
+  margin: 0 0 48px;
+}
+.sectionHead h2 {
+  font-size: var(--fs-2xl);
+  margin-top: 12px;
+}
+.sectionHead p {
+  color: var(--text-dim);
+  font-size: var(--fs-md);
+  margin-top: 16px;
+  max-width: 60ch;
+}
+.bandRaised {
+  background: var(--ink-raised);
+}
+
+/* Mobile spacing rhythm: desktop values above are too generous on narrow
+   screens relative to the 28px side gutter, which reads as uneven/sparse. */
+@media (max-width: 640px) {
+  .section {
+    padding: 56px 0;
+  }
+  .sectionHead {
+    margin: 0 0 32px;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  padding: 15px 27px;
+  border-radius: var(--radius-s);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.12s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btnRed {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 8px 22px -8px var(--red-glow);
+}
+.btnRed:hover {
+  background: var(--red-deep);
+}
+.btnOutline {
+  background: transparent;
+  border-color: #4a453d;
+  color: var(--text);
+}
+.btnOutline:hover {
+  border-color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}
+.btnGhostRed {
+  background: rgba(216, 38, 31, 0.12);
+  border-color: rgba(216, 38, 31, 0.4);
+  color: #ff8f8a;
+}
+.btnGhostRed:hover {
+  background: rgba(216, 38, 31, 0.2);
+}
+.btnBlock {
+  width: 100%;
+}
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.35ch;
+  text-decoration: none;
+  color: var(--text);
+}
+.logo .accent {
+  color: var(--red);
+}
+.logoImg {
+  height: 42px;
+  width: auto;
+  display: block;
+}

@@ -1,0 +1,117 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: min(680px, 86vh);
+  display: flex;
+  align-items: center;
+}
+.heroBg {
+  position: absolute;
+  inset: -12% -6%;
+  z-index: 0;
+  background-size: cover;
+  background-position: center 38%;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(15, 13, 11, 0.94) 0%,
+      rgba(15, 13, 11, 0.8) 34%,
+      rgba(15, 13, 11, 0.42) 60%,
+      rgba(15, 13, 11, 0.12) 88%
+    ),
+    linear-gradient(0deg, rgba(15, 13, 11, 0.75) 0%, rgba(15, 13, 11, 0.05) 46%);
+}
+.heroInner {
+  position: relative;
+  z-index: 2;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  width: 100%;
+}
+.heroCopy {
+  max-width: 600px;
+}
+.heroCopy h1 {
+  font-size: var(--fs-3xl);
+  color: var(--text);
+}
+.heroCopy h1 em {
+  font-style: normal;
+  color: var(--red);
+}
+.heroCopy p {
+  margin-top: 22px;
+  font-size: var(--fs-md);
+  color: var(--text-dim);
+  max-width: 52ch;
+}
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+.heroStats {
+  display: flex;
+  gap: 0;
+  margin-top: 48px;
+  border-top: 1px solid rgba(244, 239, 230, 0.22);
+  padding-top: 26px;
+}
+.heroStat {
+  flex: 1;
+  padding-right: 20px;
+}
+.heroStat b {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.heroStat span {
+  font-size: var(--fs-xs);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 640px) {
+  /* stats row sits at the tail of hero content; on phones the fixed
+     call/book bar permanently covers the bottom ~80px of the screen,
+     so drop the stats row here rather than let it render underneath it */
+  .heroStats {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .hero {
+    min-height: 0;
+  }
+  .heroInner {
+    padding-top: 56px;
+    padding-bottom: 40px;
+  }
+  .heroOverlay {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 13, 11, 0.55) 0%,
+      rgba(15, 13, 11, 0.88) 62%,
+      rgba(15, 13, 11, 0.96) 100%
+    );
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .heroBg {
+    transform: none !important;
+  }
+}
