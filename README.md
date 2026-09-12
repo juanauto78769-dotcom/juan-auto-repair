@@ -44,4 +44,11 @@ Heads up: while testing locally, every real submission through the form goes to 
 
 - **Placeholder photos**: the four "Recent Work" vehicle photos are stock images (credited to Wikimedia Commons in the footer, same as the original) — swap the files in `public/images/repairs/` for Juan's real repair photos whenever you have them; the layout doesn't need to change.
 - **Dependency versions**: `next` is pinned to the latest `14.2.x` patch (14.2.35) rather than the current major (16.x), to stay close to what the original canvas assumed without introducing an untested breaking upgrade. `npm audit` will still flag a handful of advisories against the 14.x line — most only matter for specific self-hosting configurations (custom servers, i18n rewrites, etc.) that this static marketing site doesn't use, but it's worth planning a move to Next 15/16 before this goes into serious production use.
-- **Analytics/SEO extras** (sitemap, robots.txt, Open Graph image, structured data for a local business) aren't included — easy to add once you know where this is actually being hosted.
+- **Analytics** (e.g. Plausible, GA4) aren't wired up yet — add once you've picked one.
+- **Favicon**: still the Next.js default. `public/images/logo.png` is a wide, near-white lockup meant for dark surfaces, so it isn't a usable favicon source as-is — needs a small square/dark-on-light mark cropped or redrawn from the logo.
+
+## SEO that's already in place
+
+- `app/layout.tsx`: full `<title>`/description targeting "Springtown, TX", Open Graph + Twitter card tags, canonical URL, and JSON-LD `AutoRepair` structured data (name/address/phone/hours) for Google's local search and rich results.
+- `app/sitemap.ts` → `/sitemap.xml`, `app/robots.ts` → `/robots.txt`, both pointing at `https://juanautorepairs.com`.
+- **This code can only do so much for local ranking.** The single biggest lever for showing up in "auto repair near me" / "Springtown" searches is a **Google Business Profile** (free, at business.google.com) with the exact same name/address/phone as the site — set that up and keep it updated with photos and review responses; it matters more than any of the on-page SEO above.
