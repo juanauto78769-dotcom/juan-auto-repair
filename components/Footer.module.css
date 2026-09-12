@@ -106,6 +106,15 @@
 .photoCredit {
   font-size: 0.9em;
 }
+.designCredit {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.designCredit:hover,
+.designCredit:focus-visible {
+  text-decoration: underline;
+}
 .backToTop {
   display: inline-flex;
   align-items: center;

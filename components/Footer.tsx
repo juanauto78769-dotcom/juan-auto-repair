@@ -100,7 +100,15 @@ export default function Footer() {
       <div className={`wrap ${styles.footerBottom}`}>
         <span>
           &copy; {year} Juan Auto Repair. Springtown, TX.{' '}
-          <span className={styles.photoCredit}>Vehicle photos via Wikimedia Commons, CC BY-SA 4.0.</span>
+          <span className={styles.photoCredit}>Vehicle photos via Wikimedia Commons, CC BY-SA 4.0.</span>{' '}
+          <a
+            className={styles.designCredit}
+            href="https://manideep.design"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Designed &amp; Developed by Manideep.design (313-727-5006)
+          </a>
         </span>
         <BackToTopButton />
       </div>
